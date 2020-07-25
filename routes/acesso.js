@@ -31,7 +31,11 @@ router.get("/", function (req, res, next) {
             res.send(response.data);
         })
         .catch((error) => {
-            console.log(error);
+            console.log("**************************************************");
+            console.log("Error:");
+            console.log(error.errno);
+            console.log(error.config.url);
+            console.log("**************************************************");
             res.send(false);
         });
     // let page = `<html><head><title>Iacon</title><link rel="stylesheet" href="/stylesheets/style.css"></head><body><h1>Express :D</h1><p>Welcome to Express Oioioi</p>${aditional}</body></html>`;
