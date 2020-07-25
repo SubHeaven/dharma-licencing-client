@@ -10,6 +10,7 @@ const router = express.Router();
 router.get("/", function (req, res, next) {
     let aditional = "";
     let m = getMAC();
+    console.log(m);
     let mac = `<br><p>MAC: ${m}</p>`;
     aditional = `${aditional}${mac}`;
     let server = JSON.parse(fs.readFileSync("bin/server"));
@@ -40,9 +41,6 @@ router.get("/", function (req, res, next) {
             console.log("**************************************************");
             res.send(false);
         });
-    // let page = `<html><head><title>Iacon</title><link rel="stylesheet" href="/stylesheets/style.css"></head><body><h1>Express :D</h1><p>Welcome to Express Oioioi</p>${aditional}</body></html>`;
-    // console.log(page);
-    // res.send(page);
 });
 
 module.exports = router;
