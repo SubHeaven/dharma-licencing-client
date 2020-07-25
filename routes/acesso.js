@@ -12,6 +12,8 @@ router.get("/", function (req, res, next) {
     let m = getMAC();
     let mac = `<br><p>MAC: ${m}</p>`;
     aditional = `${aditional}${mac}`;
+    let server = JSON.parse(fs.readFileSync("bin/server"));
+    console.log(server);
     let licence = JSON.parse(fs.readFileSync("licence.json"));
     let cnpj = `<br><p>CNPJ: ${licence.cnpj}</p>`;
     aditional = `${aditional}${cnpj}`;
@@ -25,7 +27,7 @@ router.get("/", function (req, res, next) {
     s = Buffer.from(s, "utf8").toString("hex");
 
     axios
-        .get(`http://127.0.0.1:7360/licence?key=${s}`)
+        .get(`http://${server.host}:${server.port}/licence?key=${s}`)
         .then((response) => {
             console.log(response.data);
             res.send(response.data);
